@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>My Second Web Page</title>
+
+<link rel="stylesheet" href="demo.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+       $("#btn").click(function(event){
+        function addElement() {
+           for(i=0;i<5,i++) {
+                $("tr").append("td");
+            } 
+        }
+        //Add caption element within the table
+        $("table").append("<caption></caption>");
+        //Add thead element 
+        $("table").append("<thead></thead>");
+        //Add tr#showheading
+        $("thead").append("<tr id='showheading'></tr>");
+        //Add tbody element
+        $("table").append("<tbody></tbody>");
+        //Add tr#showcalories #showfat
+        $("tbody").append("<tr id='showcalories'></tr>");
+        $("tbody").append("<tr id='showfat'></tr>");
+        //Add tfoot element
+        $("table").append("<tfoot></tfoot>");
+        //Add tr#showwven
+        $("tfoot").append("<tr id='showwven></tr>");
+        //Add td element in all the tr element
+        $("tr").append(function addElement());
+
+        //Load data from json file to each cells
+        $.getJSON('/homework/data.json',function(jqdata) {
+            $("caption").append(jqdata.title);
+            
+        })
+       });
+    });
+
+      $(document).ready(function() {
+            $("#btn").click(function(event){
+
+               //Add a div element within the body
+               $('body').append('<div id="showinfo"></div>');
+
+               //Add paragraph elements within the div
+               $('#showinfo').append('<p></p>');
+               $('#showinfo').append('<p></p>');
+               $('#showinfo').append('<p></p>');
+            
+               //Load data from json file to each paragraphs
+               $.getJSON('/getJsonExample/jq/result.json', function(jqdata) {
+                  $('#showinfo p:first-child').append('NAME: ' + jqdata.name);
+                  $('#showinfo p:nth-child(2)').append('AGE: ' + jqdata.age);
+                  $('#showinfo p:last-child').append('SEX: ' + jqdata.sex);
+               });
+					
+            });
+         });
+ </script>
+</head> 	
+<body>
+
+<div id="container">
+
+<header>My Web Site Brand</header>
+<nav>
+	<ul>
+    <li><a href="js-demo2.html">Home</a></li>
+    <li><a href="js-demo2b.html">About</a></li>
+    <li><a href="js-demo2d.html">Gallery</a></li>
+    <li><a href="js-demo2c.html">Contact</a></li>
+	</ul>
+</nav>
+
+<main>
+  <h1>My Second Heading</h1>
+  <p>My Second paragraph.</p>
+
+  <table>
+    <!--<caption></caption>
+    <thead>
+        <tr id="showheading">
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr id="showcalories">
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr id="showfat">
+            <td></td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr id="showven">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tfoot>-->
+    </table>
+
+    <input type = "button" id = "btn" value = "Load Data" style="margin-top:20px;" />
+</main>
+
+<footer>&copy; Copyright 2020</footer>
+
+</div>
+
+</body>
+</html>
